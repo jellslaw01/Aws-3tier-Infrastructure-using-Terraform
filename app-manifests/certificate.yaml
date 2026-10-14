@@ -6,8 +6,8 @@ metadata:
 spec:
   secretName: frontend-tls-secret
   dnsNames:
-    - joybassey.online
-    - api.joybassey.online
+    - example.com
+    - api.example.com
   issuerRef:
     name: letsencrypt-prod
     kind: ClusterIssuer

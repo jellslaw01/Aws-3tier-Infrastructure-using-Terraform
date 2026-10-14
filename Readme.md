@@ -28,16 +28,20 @@ Terraform provisions:
   deployment controller for the application manifests.
 - kube-prometheus-stack through Helm, with persistent gp3 storage and Grafana
   exposed through NGINX Ingress.
-- Route 53 records for `joybassey.online`.
+- Route 53 records for the placeholder domain `example.com`.
 
 The application ingress uses:
 
 ```text
-https://joybassey.online       Frontend
-https://api.joybassey.online   Backend
-https://argocd.joybassey.online Argo CD
-https://grafana.joybassey.online Grafana
+https://example.com       Frontend
+https://api.example.com   Backend
+https://argocd.example.com Argo CD
+https://grafana.example.com Grafana
 ```
+
+These use reserved placeholder values. Before deployment, replace `example.com`
+with a domain you control and `dummy@example.com` with your ACME contact email
+in the Terraform variables, Kubernetes manifests, and frontend configuration.
 
 ## Prerequisites
 
@@ -125,13 +129,13 @@ kubectl get secret prometheus-grafana -n monitoring \
 
 Terraform installs and configures Argo CD in the `argocd` namespace, including
 the TLS-protected Argo CD Ingress at
-`https://argocd.joybassey.online`. Application resources under
+`https://argocd.example.com`. Application resources under
 `app-manifests/` are intended to be delivered through Argo CD, not applied
 individually with `kubectl`.
 
 After Terraform has completed:
 
-1. Open Argo CD at `https://argocd.joybassey.online`.
+1. Open Argo CD at `https://argocd.example.com`.
 2. Create or update the Argo CD Application to use this repository as its
    source, with `app-manifests/` as the path and the target EKS cluster and
    namespace configured for the application.

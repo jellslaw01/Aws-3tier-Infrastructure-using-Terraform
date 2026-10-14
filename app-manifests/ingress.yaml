@@ -7,12 +7,12 @@ metadata:
 spec:
   tls:
   - hosts:
-    - joybassey.online
-    - api.joybassey.online
+    - example.com
+    - api.example.com
     secretName: frontend-tls-secret
   rules:
     # Frontend
-    - host: joybassey.online
+    - host: example.com
       http:
         paths:
         - path: /
@@ -24,7 +24,7 @@ spec:
                 number: 80
 
     # Backend
-    - host: api.joybassey.online
+    - host: api.example.com
       http:
         paths:
         - path: /
